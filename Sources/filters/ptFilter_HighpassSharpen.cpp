@@ -20,6 +20,8 @@
 **
 *******************************************************************************/
 
+#include <cmath>
+
 #include "ptFilter_HighpassSharpen.h"
 #include "ptCfgItem.h"
 #include "../ptConstants.h"
@@ -82,7 +84,7 @@ void ptFilter_HighpassSharpen::doRunFilter(ptImage *AImage) {
       FConfig.value(CRadius).toDouble() * TheProcessor->m_ScaleFactor,
       FConfig.value(CStrength).toDouble(),
       -0.3,
-      FConfig.value(CDenoise).toDouble()/((log(TheProcessor->m_ScaleFactor)/log(0.5))+1.0));
+      FConfig.value(CDenoise).toDouble()/((std::log(TheProcessor->m_ScaleFactor)/std::log(0.5))+1.0));
 }
 
 //------------------------------------------------------------------------------

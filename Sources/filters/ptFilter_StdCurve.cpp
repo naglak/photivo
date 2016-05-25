@@ -20,6 +20,7 @@
 **
 *******************************************************************************/
 
+#include <cmath>
 
 #include "ptFilter_StdCurve.h"
 #include "ptCfgItem.h"
@@ -70,7 +71,7 @@ void ptFilter_StdCurve::doRunFilter(ptImage *AImage) {
   } else if (FFilterName == "TextureCurve") {
     AImage->toLab();
     AImage->ApplyTextureCurve(FConfig.items()[0].Curve.get(),
-                              (int) (logf(TheProcessor->m_ScaleFactor)/logf(0.5)));
+                              (int) (std::log(TheProcessor->m_ScaleFactor)/std::log(0.5)));
 
   } else if (FFilterName == "LumaByHueCurve") {
     AImage->toLab();

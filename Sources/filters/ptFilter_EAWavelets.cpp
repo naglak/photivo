@@ -20,6 +20,8 @@
 **
 *******************************************************************************/
 
+#include <cmath>
+
 #include "ptFilter_EAWavelets.h"
 #include "ui_ptFilter_EAWavelets.h"
 #include "ptCfgItem.h"
@@ -78,7 +80,7 @@ void ptFilter_EAWavelets::doDefineControls() {
 void ptFilter_EAWavelets::onMasterValueChanged(QString, QVariant ANewValue) {
   QVariant zero         = 0.0;
   double   masterVal    = ANewValue.toDouble();
-  double   absMasterVal = fabs(masterVal);
+  double   absMasterVal = std::fabs(masterVal);
 
   FConfig.setValue(CMaster, ANewValue);
 

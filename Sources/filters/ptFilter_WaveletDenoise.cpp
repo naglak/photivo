@@ -20,6 +20,8 @@
 **
 *******************************************************************************/
 
+#include <cmath>
+
 #include "ptFilter_WaveletDenoise.h"
 #include "ui_ptFilter_WaveletDenoise.h"
 #include "ptCfgItem.h"
@@ -96,7 +98,7 @@ void ptFilter_WaveletDenoise::doRunFilter(ptImage *AImage) {
   const double LStrength = FConfig.value(CLStrength).toDouble();
   const double AStrength = FConfig.value(CAStrength).toDouble();
   const double BStrength = FConfig.value(CBStrength).toDouble();
-  const double strengthDiv = (log(TheProcessor->m_ScaleFactor)/log(0.5)) + 1.0;
+  const double strengthDiv = (std::log(TheProcessor->m_ScaleFactor)/std::log(0.5)) + 1.0;
 
   if (!qFuzzyIsNull(LStrength)) {
     AImage->WaveletDenoise(
