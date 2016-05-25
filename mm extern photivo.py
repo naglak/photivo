@@ -66,7 +66,7 @@ def plugin_main(image, drawable, visible):
     if system() == "Linux":
         # We can assume Photivo can be called with a simple photivo.
         command = 'photivo --load-and-delete "%s"' % (tempfilename)
-    
+
     elif system() == "Windows":
         # There is no way to call Photivo without knowing exactly where it is installed.
         # So we ask the user for the path to photivo.exe and store it in the user's gimprc.
@@ -80,14 +80,14 @@ def plugin_main(image, drawable, visible):
             root = Tkinter.Tk()
             root.withdraw()     # Hide the Tkinter main window so only the file dialog shows
             cmdWindows = tkFileDialog.askopenfilename(
-                    parent = None, 
-                    title = "Where is photivo.exe located?", 
+                    parent = None,
+                    title = "Where is photivo.exe located?",
                     filetypes = [('photivo.exe','photivo.exe')],
                     initialdir = "C:\\"
             )
             dummy = pdb.gimp_gimprc_set("photivo-executable", cmdWindows)
-        
-        command = '"%s" --load-and-delete "%s"' % (cmdWindows, tempfilename)    
+
+        command = '"%s" --load-and-delete "%s"' % (cmdWindows, tempfilename)
 
 
     # Invoke Photivo.
