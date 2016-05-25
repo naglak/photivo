@@ -5325,7 +5325,7 @@ ptImage* ptImage::Box(const uint16_t MaxRadius, float* Mask) {
         NewRow = NewRow < 0? -NewRow : NewRow > Height1? Height1_2-NewRow : NewRow ;
         NewRow *= m_Width;
         for(j = -IntRadius; j <= IntRadius; j++) {
-          if (Dist[abs(i)][abs(j)] < Radius) {
+          if (Dist[abs(static_cast<int>(i))][abs(static_cast<int>(j))] < Radius) {
             NewCol = Col+j;
             NewCol = NewCol < 0? -NewCol : NewCol > Width1? Width1_2-NewCol : NewCol ;
 
