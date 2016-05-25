@@ -20,6 +20,8 @@
 **
 *******************************************************************************/
 
+#include <cmath>
+
 #include "ptFilter_FilmGrain.h"
 #include "ui_ptFilter_FilmGrain.h"
 #include "ptCfgItem.h"
@@ -113,7 +115,7 @@ bool ptFilter_FilmGrain::doCheckHasActiveCfg() {
 
 void ptFilter_FilmGrain::doRunFilter(ptImage *AImage) {
   AImage->toLab();
-  int scaleFactor = static_cast<int>(logf(TheProcessor->m_ScaleFactor)/logf(0.5f));
+  int scaleFactor = static_cast<int>(std::log(TheProcessor->m_ScaleFactor)/std::log(0.5f));
 
   if (pt::isActiveMaskType(FConfig.value(CMaskType1))) {
     AImage->Grain(

@@ -20,6 +20,8 @@
 **
 *******************************************************************************/
 
+#include <cmath>
+
 #include "ptFilter_PyramidDenoise.h"
 #include "ptCfgItem.h"
 #include "../ptImage.h"
@@ -81,7 +83,7 @@ void ptFilter_PyramidDenoise::doRunFilter(ptImage *AImage) {
   AImage->dirpyrLab_denoise(
       static_cast<int>(FConfig.value(
           CLumaStrength).toDouble() /
-          pow(3.0, (log(TheProcessor->m_ScaleFactor) / log(0.5)))),
+          std::pow(3.0, (std::log(TheProcessor->m_ScaleFactor) / std::log(0.5)))),
       FConfig.value(CChromaStrength).toInt(),
       FConfig.value(CGamma).toDouble() / 3.0,
       FConfig.value(CLevels).toInt());
